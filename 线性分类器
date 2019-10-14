@@ -1,0 +1,9 @@
+ import numpy as np
+ 
+ D = 784                        # 数据维度
+ K = 10                         # 类别数
+ N = 128                        # 样本数量
+ X = np.random.randn(N,D)      
+ W = 0.01 * np.random.randn(D,K)
+ b = np.zeros((1,K))
+ scores = np.dot(X,W) + b       #广播机制
