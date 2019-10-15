@@ -1,0 +1,13 @@
+ import numpy as np
+ 
+ D = 784
+ K = 10
+ N = 128
+ 
+ scores = np.random.randn(N,K)     # 分值矩阵，每行代表一个样本
+ y = np.random.randint(K,size=N)   # 样本标签
+ exp_scores = np.exp(scores)       # 指数化分值矩阵
+ exp_scores_sum = np.sum(exp_scores,axis=1)   # 样本归一化系数
+ corect_probs = exp_scores[range(N),y] / exp_scores_sum  # 样本真实类别的归一化分值
+ corect_logprobs = -np.log(corect_probs)  # 负对数损失函数
+ data_loss = np.sum(corect_logprobs) / N  #平均损失
